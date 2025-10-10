@@ -12,11 +12,11 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import classification_report, f1_score
 
 #  1. Chargement et nettoyage
-def load_data(filepath, drop_cols=None):
+def load_data(filepath):
     df = pd.read_csv(filepath)
-    if drop_cols:
-        df.drop(columns=drop_cols, inplace=True)
     return df
+
+
 
 #  2. Encodage des colonnes catégorielles
 def encode_data(df, target_col='Churn'):
@@ -27,6 +27,7 @@ def encode_data(df, target_col='Churn'):
     df[target_col] = LabelEncoder().fit_transform(df[target_col].astype(str))
     return df
 
+
 #  3. Normalisation des colonnes numériques
 def normalize_features(df, numeric_cols):
     scaler = StandardScaler()
@@ -34,10 +35,11 @@ def normalize_features(df, numeric_cols):
     return df, scaler
 
 #  4. Split Train/Test
-def split_dataset(df, target_col='Churn', test_size=0.2, random_state=42):
+def split_dataset(df, target_col='Churn'):
     X = df.drop(columns=[target_col])
     y = df[target_col]
-    return train_test_split(X, y, test_size=test_size, random_state=random_state)
+    return train_test_split(X, y, test_size=0.2, random_state=42)
+
 
 #5. Entraînement du modèle
 def train_model(model_name, X_train, y_train):
