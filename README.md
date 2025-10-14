@@ -144,6 +144,6 @@ pytest test_pipeline.py
 
 ## Équipe & Contact
 
-Pour toute question concernant ce projet, veuillez me contacter sur l'email : ayoub.motei@gmail.com .
+Pour toute question concernant ce projet, veuillez me contacter sur l'email : mohammed@gmail.com .
 
 ---
